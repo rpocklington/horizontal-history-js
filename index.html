@@ -38,12 +38,18 @@
         return el;
       }
 
+      function getDecadeForYr(yr) {
+        return Math.floor(yr / 10);
+      }
+
+      var curYr = new Date().getFullYear();
+      var curDecade = getDecadeForYr(curYr);
+
       function buildDecadeEl(decadeYr) {
         var decadeHeight = 30;  // TODO: Define as constant
         var decadeWidth = 60;
 
-        var curDecade = Math.floor(new Date().getFullYear() / 10);
-        var decade = Math.floor(decadeYr / 10)
+        var decade = getDecadeForYr(decadeYr)
 
         var y = (curDecade - decade) * decadeHeight;
 
@@ -71,8 +77,15 @@
         return decadeEl;
       }
 
-      function buildDecadeEls(startYr) {
+      function addDecadeEls(startYr) {
+        var startDecade = getDecadeForYr(startYr);
 
+        var decadesEl = document.getElementById("decades");
+        for (var decade = startDecade; decade <= curDecade; decade++) {
+          var decadeEl = buildDecadeEl(decade * 10);
+
+          decadesEl.appendChild(decadeEl);
+        }
       }
 
       function buildFigureEl(id, name, height, color, x, y) {
@@ -117,14 +130,8 @@
       var figureEl = buildFigureEl('frankId', 'Frank Longbottom', 200, 'green');
       var figuresEl = document.getElementById("figures");
       figuresEl.appendChild(figureEl);
-      
-      var yrs = [1970, 1980, 1990, 2000, 2010];
-      for (var yrIdx = 0; yrIdx < yrs.length; yrIdx++) {
-        yr = yrs[yrIdx];
-        var decadeEl = buildDecadeEl(yr);
-        var decadesEl = document.getElementById("decades");
-        decadesEl.appendChild(decadeEl);
-      }
+
+      addDecadeEls(1924);
     </script>
   </body>
 </html>
