@@ -1,9 +1,10 @@
 <html>
   <body>
     <svg id="image" xmlns="http://www.w3.org/2000/svg" version="1.1" width="221mm" height="331mm" viewBox="-0.5 -0.5 221 331">
-      <rect x="0" y="0" width="220" height="330" fill="gray" />
+      <rect x="0" y="0" width="220" height="330" fill="white" />
       <g id="decadeOffset">
         <g id="decades" />
+        <g id="centuries" />
         <g id="figures" transform="translate(60, 0)">
          <g id="bar2" transform="translate(90, 21)">
            <g transform="translate(15, -142.5) rotate(90) translate(142.5, -15)">
@@ -94,6 +95,20 @@
         decadeOffsetEl.setAttribute("transform", "translate(0, " + offsetY + ")");
       }
 
+      function buildCenturyEl(centuryYr, width) {
+        centuryDecade = getDecadeForYr(centuryYr);
+
+        var y = (curDecade - centuryDecade + 1) * decadeHeight;
+        var pathAttrs = {
+          'd': 'M 0 ' + y + ' L ' + width + ' ' + y,
+          'stroke': 'black', 'fill': 'none',
+          'stroke-dasharray': '5,5'
+        };
+        var pathEl = buildEl('path', pathAttrs);
+        var centuriesEl = document.getElementById('centuries');
+        centuriesEl.appendChild(pathEl);
+      }
+
       function buildFigureEl(id, name, height, color, x, y) {
         var width = 30; // TODO: define as constant
 
@@ -137,7 +152,9 @@
       var figuresEl = document.getElementById("figures");
       figuresEl.appendChild(figureEl);
 
-      addDecadeEls(1924, 1992);
+      addDecadeEls(1904, 1992);
+
+      buildCenturyEl(1900, 330);
     </script>
   </body>
 </html>
