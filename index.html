@@ -77,17 +77,17 @@
 
       function addDecadeEls(startYr, endYr) {
         var startDecade = getDecadeForYr(startYr);
+        var endDecade = getDecadeForYr(endYr);
 
         // Generate all decade labels and add them to the DOM
         var decadesEl = document.getElementById("decades");
-        for (var decade = startDecade; decade <= curDecade; decade++) {
+        for (var decade = startDecade; decade <= endDecade; decade++) {
           var decadeEl = buildDecadeEl(decade * 10);
 
           decadesEl.appendChild(decadeEl);
         }
 
         // Shift all elements up based on the end decade
-        var endDecade = getDecadeForYr(endYr);
         var offsetY = (endDecade - curDecade) * decadeHeight;
 
         var decadeOffsetEl = document.getElementById("decadeOffset");
