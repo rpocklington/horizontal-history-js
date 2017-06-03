@@ -1,7 +1,10 @@
 <html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="image.css">
+  </head>
   <body>
     <svg id="image" xmlns="http://www.w3.org/2000/svg" version="1.1" width="221mm" height="331mm" viewBox="-0.5 -0.5 221 331">
-      <rect x="0" y="0" width="220" height="330" fill="white" />
+      <rect class="bg" x="0" y="0" width="220" height="330" />
       <g id="decadeOffset">
         <g id="decades" />
         <g id="centuries" />
@@ -9,12 +12,12 @@
           <g id="figures">
            <g id="bar2" transform="translate(90, 21)">
              <g transform="translate(15, -142.5) rotate(90) translate(142.5, -15)">
-               <rect x="0" y="0" width="285" height="30" style="stroke:black;fill:#66CCFF;stroke-width:1" />
-               <text x="142.5" y="15" text-anchor="middle" alignment-baseline="central">Nelson Mandela</text>
+               <rect class="bar" x="0" y="0" width="285" height="30" fill="#66CCFF" />
+               <text class="bar" x="142.5" y="15">Nelson Mandela</text>
              </g>
             </g>
           </g>
-          <rect id="future" x="0" y="0" width="220" height="0" style="stroke:gray;fill:gray" />
+          <rect id="future" class="future" x="0" y="0" width="220" height="0">
         </g>
       </g>
       <rect x="0" y="0" width="220" height="330" fill="none" stroke="black" stroke-width="1" />
@@ -133,16 +136,17 @@
         figureEl.appendChild(groupingEl);
 
         var rectAttrs = {
+          'class': 'bar',
           'x': 0, 'y': 0,
           'width': height, 'height': width, // Yes, this looks backwards, but that's because the rotate(90) transform is being applied
-          'style': "stroke:black;fill:" + color + ";stroke-width:1"
+          'fill': color
         };
         var rectEl = buildEl('rect', rectAttrs);
         groupingEl.appendChild(rectEl);
 
         var textAttrs = {
-          'x': halfHeight, 'y': halfWidth, // Yes, this looks backwards, but that's because the rotate(90) transform is being applied
-          'text-anchor': "middle", 'alignment-baseline': "central"
+          'class': 'bar',
+          'x': halfHeight, 'y': halfWidth // Yes, this looks backwards, but that's because the rotate(90) transform is being applied
         };
         var textEl = buildEl('text', textAttrs);
         textEl.innerHTML = name;

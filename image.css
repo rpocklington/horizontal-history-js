@@ -1,0 +1,18 @@
+.bg {
+  fill: white;
+}
+
+rect.bar {
+  stroke: black;
+  stroke-width: 1;
+}
+
+text.bar {
+  text-anchor: middle;
+  alignment-baseline: central;
+}
+
+rect.future {
+  stroke: gray;
+  fill: gray;
+}
