@@ -5,13 +5,16 @@
       <g id="decadeOffset">
         <g id="decades" />
         <g id="centuries" />
-        <g id="figures" transform="translate(60, 0)">
-         <g id="bar2" transform="translate(90, 21)">
-           <g transform="translate(15, -142.5) rotate(90) translate(142.5, -15)">
-             <rect x="0" y="0" width="285" height="30" style="stroke:black;fill:#66CCFF;stroke-width:1" />
-             <text x="142.5" y="15" text-anchor="middle" alignment-baseline="central">Nelson Mandela</text>
-           </g>
+        <g id="figureRegion" transform="translate(60, 0)">
+          <g id="figures">
+           <g id="bar2" transform="translate(90, 21)">
+             <g transform="translate(15, -142.5) rotate(90) translate(142.5, -15)">
+               <rect x="0" y="0" width="285" height="30" style="stroke:black;fill:#66CCFF;stroke-width:1" />
+               <text x="142.5" y="15" text-anchor="middle" alignment-baseline="central">Nelson Mandela</text>
+             </g>
+            </g>
           </g>
+          <rect id="future" x="0" y="0" width="220" height="0" style="stroke:gray;fill:gray" />
         </g>
       </g>
       <rect x="0" y="0" width="220" height="330" fill="none" stroke="black" stroke-width="1" />
@@ -148,13 +151,23 @@
         return figureEl;
       }
 
+      function setFutureHeight() {
+        var yrsIntoDecade = curYr - (curDecade * 10);
+        var yrsLeftInDecade = 10 - yrsIntoDecade;
+
+        var futureEl = document.getElementById("future");
+        futureEl.setAttribute("height", yrsLeftInDecade * decadeHeight / 10);
+      }
+
       var figureEl = buildFigureEl('frankId', 'Frank Longbottom', 200, 'green');
       var figuresEl = document.getElementById("figures");
       figuresEl.appendChild(figureEl);
 
-      addDecadeEls(1904, 1992);
+      addDecadeEls(1904, 2017);
 
       buildCenturyEl(1900, 330);
+
+      setFutureHeight();
     </script>
   </body>
 </html>
