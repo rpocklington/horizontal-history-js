@@ -14,6 +14,25 @@ rect.border {
   stroke-width: 1;
 }
 
+/* Elements involved in drawing the decade labels */
+
+rect.decadeLabel {
+  fill: none;
+  stroke: lightgray;
+  stroke-width: 1;
+}
+
+text.decadeLabel {
+  text-anchor: middle;
+  alignment-baseline: central;
+}
+
+path.centuryBoundary {
+  fill: none;
+  stroke: black;
+  stroke-dasharray: 5,5;
+}
+
 /* Elements involved in drawing a bar for a historical figure */
 
 rect.bar {

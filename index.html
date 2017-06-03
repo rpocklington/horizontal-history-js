@@ -80,17 +80,17 @@
 
         // Generate the border rectangle element
         var rectAttrs = {
+          'class': 'decadeLabel',
           'x': 0, 'y': 0,
-          'width': decadeWidth, 'height': decadeHeight,
-          'style': "stroke:lightgray;fill:none;stroke-width:1"  // TODO: Move to css
+          'width': decadeWidth, 'height': decadeHeight
         };
         var rectEl = buildEl('rect', rectAttrs);
         decadeEl.appendChild(rectEl);
 
         // Generate the text element
         var textAttrs = {
-          'x': decadeWidth / 2, 'y': decadeHeight / 2,
-          'text-anchor': 'middle', 'alignment-baseline': 'central'
+          'class': 'decadeLabel',
+          'x': decadeWidth / 2, 'y': decadeHeight / 2
         }
         var textEl = buildEl('text', textAttrs);
         textEl.innerHTML = decadeYr;
@@ -148,9 +148,8 @@
 
         // Generate the century boundary marker element
         var pathAttrs = {
+          'class': 'centuryBoundary',
           'd': 'M 0 ' + y + ' L ' + width + ' ' + y,
-          'stroke': 'black', 'fill': 'none',  // TODO: Use css
-          'stroke-dasharray': '5,5'
         };
         var pathEl = buildEl('path', pathAttrs);
         var centuriesEl = document.getElementById('centuries');
@@ -237,7 +236,7 @@
 
       addDecadeEls(1904, 2017);
 
-      addCenturyEl(1900, 330);
+      addCenturyEl(2000, 330);
 
       setFutureHeight();
     </script>
