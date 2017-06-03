@@ -1,6 +1,20 @@
-.bg {
+/* "Image-wide" elements */
+rect.bg {
   fill: white;
 }
+
+rect.future {
+  stroke: gray;
+  fill: gray;
+}
+
+rect.border {
+  fill: none;
+  stroke: black;
+  stroke-width: 1;
+}
+
+/* Elements involved in drawing a bar for a historical figure */
 
 rect.bar {
   stroke: black;
@@ -10,9 +24,4 @@ rect.bar {
 text.bar {
   text-anchor: middle;
   alignment-baseline: central;
-}
-
-rect.future {
-  stroke: gray;
-  fill: gray;
 }
